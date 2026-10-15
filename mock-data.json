@@ -1,0 +1,227 @@
+{
+  "notifications": [
+    {
+      "id": "notif-001",
+      "companyId": "company-dev-001",
+      "userId": "user-admin-001",
+      "type": "INFO",
+      "title": "Shipment Update",
+      "message": "MSKU1234567 has departed",
+      "read": true,
+      "createdAt": "2026-09-03T04:51:33.169Z",
+      "updatedAt": "2026-09-03T05:00:13.774Z"
+    },
+    {
+      "id": "notif-002",
+      "companyId": "company-dev-001",
+      "userId": "user-admin-001",
+      "type": "WARNING",
+      "title": "Low Stock Alert",
+      "message": "Tapioca Starch below threshold",
+      "read": true,
+      "createdAt": "2026-09-03T04:51:33.169Z",
+      "updatedAt": "2026-09-03T05:00:13.776Z"
+    },
+    {
+      "id": "notif-003",
+      "companyId": "company-dev-001",
+      "userId": "user-admin-001",
+      "type": "SUCCESS",
+      "title": "Order Completed",
+      "message": "PO-2026-0001 received",
+      "read": true,
+      "createdAt": "2026-09-03T04:51:33.169Z",
+      "updatedAt": "2026-09-03T04:51:33.169Z"
+    },
+    {
+      "userId": "user-admin-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Product Inquiry",
+      "message": "From: Rangga Persist (rangga@test.com) - Test persist notification setelah restart server",
+      "read": true,
+      "contactId": "con-1001",
+      "contactData": {
+        "name": "Rangga Persist",
+        "email": "rangga@test.com",
+        "company": "PT Persist",
+        "phone": "+62 812 1111 2222",
+        "subject": "product_inquiry",
+        "message": "Test persist notification setelah restart server"
+      },
+      "id": "not-1001",
+      "createdAt": "2026-09-03T04:52:13.801Z",
+      "updatedAt": "2026-09-03T04:56:44.391Z"
+    },
+    {
+      "userId": "user-manager-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Product Inquiry",
+      "message": "From: Rangga Persist (rangga@test.com) - Test persist notification setelah restart server",
+      "read": false,
+      "contactId": "con-1001",
+      "contactData": {
+        "name": "Rangga Persist",
+        "email": "rangga@test.com",
+        "company": "PT Persist",
+        "phone": "+62 812 1111 2222",
+        "subject": "product_inquiry",
+        "message": "Test persist notification setelah restart server"
+      },
+      "id": "not-1002",
+      "createdAt": "2026-09-03T04:52:13.804Z",
+      "updatedAt": "2026-09-03T04:52:13.804Z"
+    },
+    {
+      "userId": "user-sales-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Product Inquiry",
+      "message": "From: Rangga Persist (rangga@test.com) - Test persist notification setelah restart server",
+      "read": false,
+      "contactId": "con-1001",
+      "contactData": {
+        "name": "Rangga Persist",
+        "email": "rangga@test.com",
+        "company": "PT Persist",
+        "phone": "+62 812 1111 2222",
+        "subject": "product_inquiry",
+        "message": "Test persist notification setelah restart server"
+      },
+      "id": "not-1003",
+      "createdAt": "2026-09-03T04:52:13.806Z",
+      "updatedAt": "2026-09-03T04:52:13.806Z"
+    },
+    {
+      "userId": "user-customer-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Product Inquiry",
+      "message": "From: Rangga Persist (rangga@test.com) - Test persist notification setelah restart server",
+      "read": false,
+      "contactId": "con-1001",
+      "contactData": {
+        "name": "Rangga Persist",
+        "email": "rangga@test.com",
+        "company": "PT Persist",
+        "phone": "+62 812 1111 2222",
+        "subject": "product_inquiry",
+        "message": "Test persist notification setelah restart server"
+      },
+      "id": "not-1004",
+      "createdAt": "2026-09-03T04:52:13.808Z",
+      "updatedAt": "2026-09-03T04:52:13.808Z"
+    },
+    {
+      "userId": "user-admin-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Partnership",
+      "message": "From: aku (aku@gmail.com) - allo\n",
+      "read": true,
+      "contactId": "con-1002",
+      "contactData": {
+        "name": "aku",
+        "email": "aku@gmail.com",
+        "company": "gajah tunggal",
+        "phone": "+6289530437503",
+        "subject": "partnership",
+        "message": "allo\n"
+      },
+      "id": "not-1005",
+      "createdAt": "2026-09-03T05:05:06.177Z",
+      "updatedAt": "2026-09-03T05:05:19.134Z"
+    },
+    {
+      "userId": "user-manager-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Partnership",
+      "message": "From: aku (aku@gmail.com) - allo\n",
+      "read": false,
+      "contactId": "con-1002",
+      "contactData": {
+        "name": "aku",
+        "email": "aku@gmail.com",
+        "company": "gajah tunggal",
+        "phone": "+6289530437503",
+        "subject": "partnership",
+        "message": "allo\n"
+      },
+      "id": "not-1006",
+      "createdAt": "2026-09-03T05:05:06.178Z",
+      "updatedAt": "2026-09-03T05:05:06.178Z"
+    },
+    {
+      "userId": "user-sales-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Partnership",
+      "message": "From: aku (aku@gmail.com) - allo\n",
+      "read": false,
+      "contactId": "con-1002",
+      "contactData": {
+        "name": "aku",
+        "email": "aku@gmail.com",
+        "company": "gajah tunggal",
+        "phone": "+6289530437503",
+        "subject": "partnership",
+        "message": "allo\n"
+      },
+      "id": "not-1007",
+      "createdAt": "2026-09-03T05:05:06.179Z",
+      "updatedAt": "2026-09-03T05:05:06.179Z"
+    },
+    {
+      "userId": "user-customer-001",
+      "companyId": "company-dev-001",
+      "type": "INFO",
+      "title": "New Contact: Partnership",
+      "message": "From: aku (aku@gmail.com) - allo\n",
+      "read": false,
+      "contactId": "con-1002",
+      "contactData": {
+        "name": "aku",
+        "email": "aku@gmail.com",
+        "company": "gajah tunggal",
+        "phone": "+6289530437503",
+        "subject": "partnership",
+        "message": "allo\n"
+      },
+      "id": "not-1008",
+      "createdAt": "2026-09-03T05:05:06.181Z",
+      "updatedAt": "2026-09-03T05:05:06.181Z"
+    }
+  ],
+  "contactMessages": [
+    {
+      "name": "Rangga Persist",
+      "email": "rangga@test.com",
+      "company": "PT Persist",
+      "phone": "+62 812 1111 2222",
+      "subject": "product_inquiry",
+      "message": "Test persist notification setelah restart server",
+      "status": "NEW",
+      "read": false,
+      "replied": false,
+      "id": "con-1001",
+      "createdAt": "2026-09-03T04:52:11.965Z",
+      "updatedAt": "2026-09-03T04:52:11.965Z"
+    },
+    {
+      "name": "aku",
+      "email": "aku@gmail.com",
+      "company": "gajah tunggal",
+      "phone": "+6289530437503",
+      "subject": "partnership",
+      "message": "allo\n",
+      "status": "NEW",
+      "read": false,
+      "replied": false,
+      "id": "con-1002",
+      "createdAt": "2026-09-03T05:05:04.696Z",
+      "updatedAt": "2026-09-03T05:05:04.696Z"
+    }
+  ]
+}
