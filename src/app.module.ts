@@ -31,6 +31,7 @@ import { UploadModule } from "./upload/upload.module";
 import { ContactModule } from "./contact/contact.module";
 import { EmailModule } from "./email/email.module";
 import { AiModule } from "./ai/ai.module";
+import { CommunityModule } from "./community/community.module";
 
 @Module({
   imports: [
@@ -78,6 +79,7 @@ import { AiModule } from "./ai/ai.module";
     ContactModule,
     EmailModule,
     AiModule,
+    CommunityModule,
   ],
   providers: [
     {

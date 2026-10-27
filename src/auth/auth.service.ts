@@ -24,8 +24,23 @@ export class AuthService {
     // Check if Firebase is available
     if (!this.firebaseService.isFirebaseReady()) {
       // Mock mode: create user without Firebase
+      const normalizedEmail = email.trim().toLowerCase();
+      const existingUsers = await this.firebaseService.getDocuments("users", [
+        { field: "email", operator: "==", value: normalizedEmail },
+      ]);
+      if (existingUsers.length > 0) {
+        throw new ConflictException("User with this email already exists");
+      }
       const mockUid = `mock-${Date.now()}`;
       const mockToken = `mock-token-${mockUid}`;
+
+      await this.firebaseService.createDocument("users", {
+        id: mockUid,
+        email: normalizedEmail,
+        name,
+        role: "VIEWER",
+        status: "ACTIVE",
+      });
 
       console.log(`[MOCK] Registered user: ${email} (uid: ${mockUid})`);
 
@@ -33,12 +48,12 @@ export class AuthService {
         success: true,
         data: {
           uid: mockUid,
-          email,
+          email: normalizedEmail,
           name,
           token: mockToken,
           user: {
             id: mockUid,
-            email,
+            email: normalizedEmail,
             name,
             role: "VIEWER",
             status: "ACTIVE",
@@ -114,6 +129,7 @@ export class AuthService {
     // Check if Firebase is available
     if (!this.firebaseService.isFirebaseReady()) {
       // Mock mode: return mock user with predefined accounts
+      const normalizedEmail = email.trim().toLowerCase();
       const mockUsers: Record<
         string,
         { uid: string; name: string; role: string }
@@ -135,11 +151,26 @@ export class AuthService {
         },
       };
 
-      const mockUser = mockUsers[email];
-      const mockUid = mockUser?.uid || `mock-${email.replace(/[^a-z0-9]/gi, "-")}`;
-      const mockName = mockUser?.name || email.split("@")[0];
-      const mockRole = mockUser?.role || "VIEWER";
+      const mockUser = mockUsers[normalizedEmail];
+      const savedUsers = await this.firebaseService.getDocuments("users", [
+        { field: "email", operator: "==", value: normalizedEmail },
+      ]);
+      const savedUser = savedUsers[0];
+      const mockUid = mockUser?.uid || savedUser?.id || `mock-${normalizedEmail.replace(/[^a-z0-9]/gi, "-")}`;
+      const mockName = savedUser?.name || mockUser?.name || normalizedEmail.split("@")[0];
+      const mockRole = savedUser?.role || mockUser?.role || "VIEWER";
       const mockToken = `mock-token-${mockUid}`;
+
+      const existingUser = await this.firebaseService.getDocument("users", mockUid);
+      if (!existingUser) {
+        await this.firebaseService.createDocument("users", {
+          id: mockUid,
+          email: email.trim().toLowerCase(),
+          name: mockName,
+          role: mockRole,
+          status: "ACTIVE",
+        });
+      }
 
       console.log(`[MOCK] Login: ${email} (role: ${mockRole})`);
 
@@ -147,12 +178,12 @@ export class AuthService {
         success: true,
         data: {
           uid: mockUid,
-          email,
+          email: normalizedEmail,
           name: mockName,
           token: mockToken,
           user: {
             id: mockUid,
-            email,
+            email: normalizedEmail,
             name: mockName,
             role: mockRole,
             status: "ACTIVE",

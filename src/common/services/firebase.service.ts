@@ -14,6 +14,13 @@ class MockStore {
   private persistCollections = [
     "notifications",
     "contactMessages",
+    "users",
+    "groups",
+    "groupMembers",
+    "groupInvitations",
+    "messages",
+    "reports",
+    "moderationActions",
   ];
 
   constructor() {
@@ -529,10 +536,165 @@ export class FirebaseService implements OnModuleInit {
       },
     ]);
 
+    // Seed community groups
+    this.mockStore.seed("groups", [
+      {
+        id: "group-001",
+        name: "Budidaya Singkong Berkualitas",
+        description: "Grup diskusi tentang teknik budidaya singkong yang baik dan benar, mulai dari persiapan lahan hingga panen.",
+        topic: "CULTIVATION",
+        visibility: "PUBLIC",
+        rules: "1. Tetap santun dan sopan\n2. Tidak spam atau promosi berlebihan\n3. Bahas sesuai topik budidaya singkong\n4. Dilarang membagikan konten ilegal",
+        creatorId: "user-admin-001",
+        companyId: "company-dev-001",
+        status: "ACTIVE",
+        memberCount: 3,
+        createdAt: "2026-08-15T10:00:00Z",
+      },
+      {
+        id: "group-002",
+        name: "Kualitas & Standar Singkong Ekspor",
+        description: "Diskusi tentang standar kualitas singkong untuk ekspor, sertifikasi, dan persyaratan pasar internasional.",
+        topic: "QUALITY",
+        visibility: "PUBLIC",
+        rules: "1. Fokus pada standar kualitas\n2. Bagikan pengalaman ekspor\n3. Tidak membocorkan data rahasia perusahaan",
+        creatorId: "user-manager-001",
+        companyId: "company-dev-001",
+        status: "ACTIVE",
+        memberCount: 2,
+        createdAt: "2026-08-20T14:00:00Z",
+      },
+      {
+        id: "group-003",
+        name: "Teknologi Pengolahan Singkong Modern",
+        description: "Ruang bagi pengusaha dan peneliti untuk berbagi inovasi teknologi pengolahan singkong.",
+        topic: "TECHNOLOGY",
+        visibility: "PRIVATE",
+        rules: "1. Hanya untuk praktisi industri\n2. Dilarang membocorkan trade secret\n3. Diskusi teknis mendalam",
+        creatorId: "user-admin-001",
+        companyId: "company-dev-001",
+        status: "ACTIVE",
+        memberCount: 2,
+        createdAt: "2026-08-25T09:00:00Z",
+      },
+    ]);
+
+    // Seed group members
+    this.mockStore.seed("groupMembers", [
+      {
+        id: "gm-001",
+        groupId: "group-001",
+        userId: "user-admin-001",
+        role: "OWNER",
+        status: "ACTIVE",
+        joinedAt: "2026-08-15T10:00:00Z",
+      },
+      {
+        id: "gm-002",
+        groupId: "group-001",
+        userId: "user-manager-001",
+        role: "ADMIN",
+        status: "ACTIVE",
+        joinedAt: "2026-08-15T11:00:00Z",
+      },
+      {
+        id: "gm-003",
+        groupId: "group-001",
+        userId: "user-sales-001",
+        role: "MEMBER",
+        status: "ACTIVE",
+        joinedAt: "2026-08-16T09:00:00Z",
+      },
+      {
+        id: "gm-004",
+        groupId: "group-002",
+        userId: "user-manager-001",
+        role: "OWNER",
+        status: "ACTIVE",
+        joinedAt: "2026-08-20T14:00:00Z",
+      },
+      {
+        id: "gm-005",
+        groupId: "group-002",
+        userId: "user-sales-001",
+        role: "MEMBER",
+        status: "ACTIVE",
+        joinedAt: "2026-08-21T10:00:00Z",
+      },
+      {
+        id: "gm-006",
+        groupId: "group-003",
+        userId: "user-admin-001",
+        role: "OWNER",
+        status: "ACTIVE",
+        joinedAt: "2026-08-25T09:00:00Z",
+      },
+      {
+        id: "gm-007",
+        groupId: "group-003",
+        userId: "user-manager-001",
+        role: "ADMIN",
+        status: "ACTIVE",
+        joinedAt: "2026-08-25T10:00:00Z",
+      },
+    ]);
+
+    // Seed messages
+    this.mockStore.seed("messages", [
+      {
+        id: "msg-001",
+        groupId: "group-001",
+        senderId: "user-admin-001",
+        text: "Selamat datang di grup Budidaya Singkong Berkualitas! Silakan perkenalkan diri dan bagikan pengalaman budidaya Anda.",
+        status: "SENT",
+        createdAt: "2026-08-15T10:05:00Z",
+      },
+      {
+        id: "msg-002",
+        groupId: "group-001",
+        senderId: "user-manager-001",
+        text: "Halo semuanya! Saya Manager dari PT Indocassava Trading. Senang bergabung di komunitas ini.",
+        status: "SENT",
+        createdAt: "2026-08-15T11:15:00Z",
+      },
+      {
+        id: "msg-003",
+        groupId: "group-001",
+        senderId: "user-sales-001",
+        text: "Hai! Saya dari tim Sales. Ada tips budidaya singkong varietas baru yang tahan kekeringan?",
+        status: "SENT",
+        createdAt: "2026-08-16T09:30:00Z",
+      },
+      {
+        id: "msg-004",
+        groupId: "group-001",
+        senderId: "user-admin-001",
+        text: "Varietas Malang 6 dan Malang 8 cukup tahan kekeringan. Pastikan drainase baik ya!",
+        status: "SENT",
+        createdAt: "2026-08-16T10:00:00Z",
+      },
+      {
+        id: "msg-005",
+        groupId: "group-002",
+        senderId: "user-manager-001",
+        text: "Selamat datang di grup Kualitas & Standar Singkong Ekspor. Mari diskusikan standar internasional.",
+        status: "SENT",
+        createdAt: "2026-08-20T14:10:00Z",
+      },
+      {
+        id: "msg-006",
+        groupId: "group-002",
+        senderId: "user-sales-001",
+        text: "Apa syarat utama untuk ekspor ke pasar Cina?",
+        status: "SENT",
+        createdAt: "2026-08-21T10:30:00Z",
+      },
+    ]);
+
     // Count total seeded documents
     let totalDocs = 0;
     const collections = ["users", "companies", "categories", "products", "suppliers", "customers",
-      "warehouses", "inventory", "purchaseOrders", "salesOrders", "shipments", "transactions", "notifications", "orders"];
+      "warehouses", "inventory", "purchaseOrders", "salesOrders", "shipments", "transactions", "notifications", "orders", "groups", "groupMembers", "messages"];
     collections.forEach((c) => {
       totalDocs += this.mockStore.count(c);
     });

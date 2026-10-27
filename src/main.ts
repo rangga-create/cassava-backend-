@@ -24,8 +24,21 @@ async function bootstrap() {
   // ============================================
   // CORS Configuration
   // ============================================
+  const frontendOrigin = new URL(
+    configService.get<string>("FRONTEND_URL", "http://localhost:3000"),
+  ).origin;
+  const allowedOrigins = [frontendOrigin];
+  const frontendUrl = new URL(frontendOrigin);
+  if (
+    process.env.NODE_ENV !== "production" &&
+    (frontendUrl.hostname === "localhost" || frontendUrl.hostname === "127.0.0.1")
+  ) {
+    frontendUrl.hostname = frontendUrl.hostname === "localhost" ? "127.0.0.1" : "localhost";
+    allowedOrigins.push(frontendUrl.origin);
+  }
+
   app.enableCors({
-    origin: configService.get<string>("FRONTEND_URL", "http://localhost:3000"),
+    origin: allowedOrigins,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
     credentials: true,
   });
